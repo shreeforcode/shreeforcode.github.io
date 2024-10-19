@@ -144,13 +144,6 @@
             <p class="text-xl text-blue-400">Entrepreneur | AI Researcher | Quantitative Analyst </p>
         </header>
 
-        <nav class="mb-12">
-            <ul class="flex justify-center space-x-4">
-                <li><a href="#journey" class="text-blue-400 hover:text-blue-300">Journey</a></li>
-                <li><a href="#curiosities" class="text-blue-400 hover:text-blue-300">Curiosities</a></li>
-            </ul>
-        </nav>
-
         <main>
             <section id="journey" class="mb-12">
                 <h2 class="text-[1rem] font-bold mb-6 text-white">Journey</h2>
@@ -406,71 +399,72 @@
         <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
     </div>
 
-    <!-- Blog Item 2 -->
-    <div class="blog-section" id="blog2">
-        <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Open Source and AI Research</h2>
-        <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-            <strong>Titanic Dataset Prediction with GPT-4 (2024)</strong>
+<!-- Blog Item 2 -->
+<div class="blog-section" id="blog2">
+    <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Open Source and AI Research</h2>
+    <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
+        <strong>Titanic Dataset Prediction with GPT-4 (2024)</strong>
+    </p>
+
+    <!-- Block for Titanic Dataset Prediction -->
+    <div class="text-gray-300"
+        style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
+        <p style="margin-bottom: 20px; color: #696969;">
+            We recently tackled the famous Titanic Dataset prediction task using GPT-4, achieving impressive results
+            with 78% accuracy. Our approach involved providing the model with survival rate statistics based on
+            parameters such as age, class, and gender. Initially, fare emerged as a key predictor, but the model also
+            identified a combination of age and class as important factors.
         </p>
 
-        <!-- Block for Titanic Dataset Prediction -->
-        <div class="text-gray-300"
-            style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-            <p style="margin-bottom: 20px; color: #696969;">
-                We recently tackled the famous Titanic Dataset prediction task using GPT-4, achieving impressive results
-                with
-                78% accuracy.
-                Our approach involved providing the model with survival rate statistics based on parameters such as age,
-                class,
-                and gender.
-                Initially, fare emerged as a key predictor, but the model also identified a combination of age and class
-                as
-                important factors.
-            </p>
-
-            <!-- Sub-heading -->
-            <p style="color: #696969;">
-                <strong>Significant Findings:</strong>
-            </p>
-
-            <!-- Sub-pointers -->
-            <ul style="color: #696969; margin-bottom: 20px;">
-                <li>Fare and class combined played a crucial role in survival prediction.</li>
-                <li>The model was able to suggest new factors based on the input data, improving prediction accuracy.
-                </li>
-                <li>However, the model struggled to prioritize facts, such as the higher impact of gender over fare.
-                </li>
-            </ul>
-
-            <p style="margin-bottom: 20px; color: #696969;">
-                The highest accuracy achieved was 77.99%, but we identified opportunities for further improvement. We
-                believe
-                Direct Preference Optimization (DPO) could help train the model to better prioritize certain factors and
-                increase the accuracy beyond 80%.
-            </p>
-        </div>
-
-        <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-            <strong>Solving Tic-Tac-Toe with Reinforcement Learning & Open Source Contribution</strong>
+        <!-- Sub-heading -->
+        <p style="color: #696969;">
+            <strong>Significant Findings:</strong>
         </p>
 
-        <!-- Block for Tic-Tac-Toe and Open Source -->
-        <div class="text-gray-300"
-            style="border: 1px solid #ccc; padding: 20px; background-color: #f0f8ff; border-radius: 10px; margin-top: 20px;">
-            <p style="margin-bottom: 20px;color: #696969;">
-                Another exciting project involved solving Tic-Tac-Toe using reinforcement learning for large language
-                models
-                (LLMs). This experiment opened up possibilities for scaling training data and improving LLMs'
-                decision-making
-                capabilities.
-                In collaboration with a friend, I also contributed to open source by building a massive dataset inspired
-                by
-                VQGAN models, which has been helpful for freelance AI research projects.
-            </p>
+        <!-- Sub-pointers -->
+        <ul style="color: #696969; margin-bottom: 20px;">
+            <li>Fare and class combined played a crucial role in survival prediction.</li>
+            <li>The model was able to suggest new factors based on the input data, improving prediction accuracy.</li>
+            <li>However, the model struggled to prioritize facts, such as the higher impact of gender over fare.</li>
+        </ul>
+
+        <p style="margin-bottom: 20px; color: #696969;">
+            The highest accuracy achieved was 77.99%, but we identified opportunities for further improvement. We
+            believe Direct Preference Optimization (DPO) could help train the model to better prioritize certain
+            factors and increase the accuracy beyond 80%.
+        </p>
+
+        <!-- Image Section -->
+        <div style="margin-bottom: 20px; text-align: center;">
+            <img src="GH5EOQIXIAAznKP.jpg" alt="Titanic Prediction Image" style="max-width: 100%; border-radius: 10px;">
         </div>
 
-        <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
+        <!-- Video Section -->
+        <div style="margin-bottom: 20px; text-align: center;">
+            <video controls style="max-width: 100%; border-radius: 10px;">
+                <source src="fakjfhhfdaoij - 1764925474134720694.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
+
+    <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
+        <strong>Solving Tic-Tac-Toe with Reinforcement Learning & Open Source Contribution</strong>
+    </p>
+
+    <!-- Block for Tic-Tac-Toe and Open Source -->
+    <div class="text-gray-300"
+        style="border: 1px solid #ccc; padding: 20px; background-color: #f0f8ff; border-radius: 10px; margin-top: 20px;">
+        <p style="margin-bottom: 20px;color: #696969;">
+            Another exciting project involved solving Tic-Tac-Toe using reinforcement learning for large language
+            models (LLMs). This experiment opened up possibilities for scaling training data and improving LLMs'
+            decision-making capabilities. In collaboration with a friend, I also contributed to open source by building
+            a massive dataset inspired by VQGAN models, which has been helpful for freelance AI research projects.
+        </p>
+    </div>
+
+    <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
+</div>
 
     <!-- Blog Item 3 -->
     <div class="blog-section" id="blog3">
@@ -603,25 +597,29 @@
         </div>
 
         <!-- Blog Item 5 -->
-        <div class="blog-section" id="blog5">
-            <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Published 'The IITM Nexus'</h2>
-            <p class="text-gray-300">
-                Well, I with my team at "Insti" used to write books on college entrepreneurs. We loved doing that, it
-                was fun sharing
-                small wins of people and few became really successful in them. We used to share them on LinkedIn, one
-                day and alumni
-                pinged asking if we will be interested in writing a book on IIT Madras Alumni (My college), who have
-                already successful
-                companies. It felt interesting so I jumped in, and what a roller coaster journey it was. It pushed me
-                from being fully
-                non tech to tech, to asking tough questions from mental pressure, relationship management, closing of a
-                company and
-                long-short run thoughts. It's focus was to try to see them through the lens of college students and make
-                it as relatable
-                it can get. It was beautiful ❤️.
-            </p>
-            <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
-        </div>
+<div class="blog-section" id="blog5">
+    <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Published 'The IITM Nexus'</h2>
+
+    <!-- Add the image with smaller size and border -->
+    <img src="book.png" alt="The IITM Nexus Book Cover" class="w-32 h-auto border-2 border-gray-400 rounded mb-4">
+
+    <p class="text-gray-300">
+        Well, I with my team at "Insti" used to write books on college entrepreneurs. We loved doing that, it
+        was fun sharing small wins of people and few became really successful in them. We used to share them on
+        LinkedIn, one
+        day and alumni pinged asking if we will be interested in writing a book on IIT Madras Alumni (My college), who
+        have
+        already successful companies. It felt interesting so I jumped in, and what a roller coaster journey it was. It
+        pushed me
+        from being fully non tech to tech, to asking tough questions from mental pressure, relationship management,
+        closing of a
+        company and long-short run thoughts. It's focus was to try to see them through the lens of college students and
+        make
+        it as relatable it can get. It was beautiful ❤️.
+    </p>
+
+    <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
+</div>
 
         <!-- Blog Item 6 -->
         <div class="blog-section" id="blog6">
