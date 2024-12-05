@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founded Insti - Shree Pandey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #D1D5DB;
+            --accent-color: #3B82F6;
+            --hover-color: #60A5FA;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .blog-content video {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .micro-blog-section {
+            border-left: 2px solid var(--accent-color);
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-black/50 backdrop-blur-sm fixed w-full z-50 top-0">
+        <div class="container mx-auto px-4 py-3">
+            <a href="/" class="text-blue-400 hover:text-blue-300 font-bold">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Blog Header -->
+        <header class="mt-16 mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Founded Insti</h1>
+            <div class="flex items-center text-gray-400">
+                <span class="mr-4">2020</span>
+                <span>Entrepreneurship</span>
+            </div>
+        </header>
+
+        <!-- Main Blog Content -->
+        <article class="blog-content prose prose-invert max-w-none">
+            <!-- Main Content -->
+            <div class="text-gray-300">
+                <p class="text-xl font-semibold mb-6">
+                    This project happened when I felt I needed a break in life and give time to living small moments of
+                    Campus.
+                </p>
+
+                <div class="bg-gray-900/50 rounded-lg p-6 mb-8">
+                    <p class="mb-6">
+                        There was a successful campus confession page whose admin I used to talk with. Just as a joke,
+                        we thought, what if we ran ads on it by getting sponsors? We got our first money. Slowly, the
+                        admin wanted to focus on study, and instead of closing the page, I proposed taking it over. What
+                        a journey it was! Initially, I got involved a lot in campus-related things, which pushed the
+                        page's growth. But as soon as COVID started, we began expanding, hiring people from other
+                        colleges, launching more pages, and increasing content quality. I loved building it with a great
+                        team and even launched several sub-companies.
+                    </p>
+
+                    <h3 class="text-lg font-bold text-white mb-4">Why I stopped it?</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>It was taxing to manage a constantly changing team of interns, with new people joining and
+                            leaving every semester.</li>
+                        <li>Financially, it wasn't very sustainable. The money that felt big in 2nd year felt small in
+                            3rd year as ambitions grew.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Micro Blog Updates Section -->
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-white mb-6">Updates</h2>
+                <div class="space-y-6">
+                    <!-- Micro blog entries will be dynamically inserted here -->
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 mt-12 pb-8">
+        <p>&copy; 2024 Shree Pandey. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

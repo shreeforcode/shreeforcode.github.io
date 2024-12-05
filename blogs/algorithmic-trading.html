@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithmic Trading & Hedge Fund Experience - Shree Pandey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #D1D5DB;
+            --accent-color: #3B82F6;
+            --hover-color: #60A5FA;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .blog-content video {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .micro-blog-section {
+            border-left: 2px solid var(--accent-color);
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+        }
+
+        .content-block {
+            border: 1px solid #374151;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            background-color: rgba(17, 24, 39, 0.5);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-black/50 backdrop-blur-sm fixed w-full z-50 top-0">
+        <div class="container mx-auto px-4 py-3">
+            <a href="/" class="text-blue-400 hover:text-blue-300 font-bold">← Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Blog Header -->
+        <header class="mt-16 mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Algorithmic Trading & Hedge Fund Experience</h1>
+            <div class="flex items-center text-gray-400">
+                <span class="mr-4">2023 - 2024</span>
+                <span>Trading • Algorithms • Finance</span>
+            </div>
+        </header>
+
+        <!-- Main Blog Content -->
+        <article class="blog-content prose prose-invert max-w-none">
+            <!-- Crypto Options Trading Section -->
+            <div class="content-block">
+                <h2 class="text-2xl font-bold text-blue-400 mb-6">Developed a crypto options trading algorithm (Jan -
+                    Jul 2023)</h2>
+                <div class="text-gray-300">
+                    <p class="mb-4">
+                        I wanted to build an algorithm for prediction markets. I started with cricket but quickly
+                        shifted to crypto since time arbitrage and fixing weren't prevalent in small-sized crypto
+                        options and on the exchange. The primary goal was to develop an algorithm that could trade
+                        better than humans. When we began, I had no idea how Python worked, but early ChatGPT assistance
+                        was invaluable.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-white mt-6 mb-3">Significant challenges at the start:</h3>
+                    <ul class="list-disc list-inside mb-6">
+                        <li>Options time duration was 20 minutes, and they were binary.</li>
+                        <li>Research in this space, especially in crypto, was negligible, providing no solid foundation
+                            to begin.</li>
+                        <li>High unpredictability of the crypto market – pretty obvious challenge.</li>
+                    </ul>
+
+                    <p class="mb-6">
+                        I dove in headfirst, spending significant time analyzing data and talking to traders. True
+                        realization began when I started manually reading the data. After working with it for so long, I
+                        gained a rough understanding of what the price of an option should be, and when it didn't match,
+                        I looked for reasons. It was a hellish three months of figuring things out, especially with no
+                        mentorship on how to build something like this or if it was even possible. But with strong
+                        encouragement from mentors to just keep trying, I managed to create the algorithm. It wasn't
+                        perfect, but it performed exceptionally well under certain conditions.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-white mt-6 mb-3">Good conditions for the algorithm:</h3>
+                    <ul class="list-disc list-inside mb-6">
+                        <li>When the market was highly unpredictable but not in a pump-and-dump cycle</li>
+                        <li>When the market wasn't racing up or down</li>
+                    </ul>
+
+                    <p class="mb-6">
+                        The algorithm was based on random motion, which I later realized was a foundation of the
+                        Black-Scholes equation too. I applied a 1D analogy instead of a 2D one. Sometimes, it worked so
+                        well that we made 10x returns in an hour from our base capital.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-white mt-6 mb-3">Why didn't I continue?</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Crypto volumes in the real market dried up: When this happens, the market stays stable for
+                            long periods, and theta decay becomes the primary way to make money. I had no idea what
+                            theta was at that time.</li>
+                        <li>The exchange we were working with was reconsidering allowing algorithms due to legal
+                            considerations.</li>
+                        <li>A minor factor was the uncertainty surrounding government taxation on high-frequency trading
+                            (HFT) in these spaces.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hedge Fund Experience Section -->
+            <div class="content-block">
+                <h2 class="text-2xl font-bold text-blue-400 mb-6">Built a massive simulation for testing trading
+                    strategies at a hedge fund (Aug 2023 - Jan 2024)</h2>
+                <div class="text-gray-300">
+                    <p>
+                        At the hedge fund, I wasn't as satisfied with my performance as I usually am. Building a massive
+                        simulation capable of testing 1 million different trading strategies with limited GPU usage and
+                        time was a significant achievement. Each iteration improved, but I never felt it was good enough
+                        for the time I spent on it. However, two positive things came out of the experience: I regained
+                        trust in my mathematical skills, and I realized that more than money, what really matters to me
+                        is making an impact and solving people's problems.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Micro Blog Updates Section -->
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-white mb-6">Updates</h2>
+                <div class="space-y-6">
+                    <!-- Micro blog entries will be dynamically inserted here -->
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 mt-12 pb-8">
+        <p>&copy; 2024 Shree Pandey. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
