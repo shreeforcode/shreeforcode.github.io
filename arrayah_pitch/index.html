@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrayah Pitch Feedback</title>
+    <title>Arrayah Pitch</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -20,43 +20,65 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #1a1c20 0%, #0c0d0f 100%);
             color: #fff;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 15px;
         }
 
         h1 {
-            font-size: 3em;
+            font-size: clamp(1.8em, 5vw, 2.5em);
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: titleGlow 2s ease-in-out infinite alternate;
+            line-height: 1.2;
+        }
+
+        .meeting-checkbox {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .meeting-checkbox:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .meeting-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .meeting-checkbox label {
+            font-size: 1.1em;
+            cursor: pointer;
         }
 
         .slide {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .slide:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 15px;
             color: #4ecdc4;
             display: flex;
             align-items: center;
@@ -65,15 +87,14 @@
 
         textarea {
             width: 100%;
-            min-height: 120px;
+            min-height: 100px;
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 15px;
+            padding: 12px;
             color: #fff;
             font-size: 16px;
             resize: vertical;
-            transition: all 0.3s ease;
         }
 
         textarea:focus {
@@ -84,9 +105,10 @@
 
         .contact-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
-            margin-top: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .button {
@@ -99,12 +121,8 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .button i {
-            font-size: 1.2em;
+            min-width: 200px;
+            justify-content: center;
         }
 
         .whatsapp {
@@ -115,42 +133,8 @@
             background: linear-gradient(45deg, #EA4335, #C71610);
         }
 
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .button:hover::after {
-            transform: translateX(100%);
-        }
-
-        @keyframes titleGlow {
-            from {
-                text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
-            }
-
-            to {
-                text-shadow: 0 0 20px rgba(78, 205, 196, 0.8);
-            }
-        }
-
-        .intro-text {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #ccc;
-            font-size: 1.1em;
+        .button:active {
+            transform: scale(0.98);
         }
 
         .loading {
@@ -184,6 +168,20 @@
                 transform: rotate(360deg);
             }
         }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .slide {
+                padding: 15px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -191,31 +189,34 @@
     <div class="container">
         <h1>Questions & Feedback</h1>
 
-        <p class="intro-text">Have questions about the pitch? Write them down here.</p>
+        <div class="meeting-checkbox">
+            <input type="checkbox" id="meetingRequest" name="meetingRequest">
+            <label for="meetingRequest">I would like to schedule a meeting to discuss further</label>
+        </div>
 
         <div class="slide">
             <h2><i class="fas fa-lightbulb"></i> Vision & Strategy</h2>
-            <textarea id="slide1" placeholder="Questions about the vision or overall strategy..."></textarea>
+            <textarea id="slide1" placeholder="Your questions..."></textarea>
         </div>
 
         <div class="slide">
             <h2><i class="fas fa-exclamation-circle"></i> Problem & Solution</h2>
-            <textarea id="slide2" placeholder="Questions about the problem or proposed solution..."></textarea>
+            <textarea id="slide2" placeholder="Your questions..."></textarea>
         </div>
 
         <div class="slide">
             <h2><i class="fas fa-chart-line"></i> Go-To-Market</h2>
-            <textarea id="slide3" placeholder="Questions about market strategy and execution..."></textarea>
+            <textarea id="slide3" placeholder="Your questions..."></textarea>
         </div>
 
         <div class="slide">
             <h2><i class="fas fa-coins"></i> Investment</h2>
-            <textarea id="slide4" placeholder="Questions about investment and financials..."></textarea>
+            <textarea id="slide4" placeholder="Your questions..."></textarea>
         </div>
 
         <div class="slide">
             <h2><i class="fas fa-comment"></i> Other Questions</h2>
-            <textarea id="slide5" placeholder="Any other questions or feedback..."></textarea>
+            <textarea id="slide5" placeholder="Your questions..."></textarea>
         </div>
 
         <div class="contact-buttons">
@@ -237,11 +238,17 @@
     <script>
         function getFormattedMessage() {
             let message = "Questions & Feedback:\n\n";
+
+            if (document.getElementById('meetingRequest').checked) {
+                message += "✓ I would like to schedule a meeting to discuss further\n\n";
+            }
+
             message += "Vision & Strategy:\n" + document.getElementById('slide1').value + "\n\n";
             message += "Problem & Solution:\n" + document.getElementById('slide2').value + "\n\n";
             message += "Go-To-Market:\n" + document.getElementById('slide3').value + "\n\n";
             message += "Investment:\n" + document.getElementById('slide4').value + "\n\n";
             message += "Other Questions:\n" + document.getElementById('slide5').value;
+
             return encodeURIComponent(message);
         }
 
