@@ -1,785 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shree Pandey - Personal Website</title>
+    <title>Shree Pandey - AI Consultant for Executives</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define CSS Variables for Modular Color Scheme */
         :root {
-            --bg-color: #000000;
-            /* Dark Black */
-            --text-color: #D1D5DB;
-            /* Light Grey */
-            --accent-color: #3B82F6;
-            /* Blue */
-            --hover-color: #60A5FA;
-            /* Light Blue */
-            --tooltip-bg: rgba(59, 130, 246, 0.9);
-            /* Semi-transparent Blue */
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --gray-900: #111827;
+            --gray-800: #1f2937;
+            --gray-100: #f3f4f6;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
         }
 
-        /* Profile Image */
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
 
-        /* Tooltip Styles */
-        .tooltip {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            transform: translateX(-50%);
-            background-color: var(--tooltip-bg);
-            color: #fff;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            white-space: normal;
-            max-width: 200px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
+        .card-hover {
+            transition: all 0.3s ease;
         }
 
-        .tooltip-visible {
-            opacity: 1;
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        /* Blog Section Styles */
-        .blog-section {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 600px;
-            height: 100%;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-y: auto;
-            transition: right 0.5s ease;
-            padding: 2rem;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-            z-index: 50;
+        .floating-pattern {
+            animation: float 6s ease-in-out infinite;
         }
 
-        .blog-section.active {
-            right: 0;
+        .floating-pattern:nth-child(2) {
+            animation-delay: -2s;
         }
 
-        /* Overlay for Blog Section */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(31, 41, 55, 0.5);
-            /* Semi-transparent Dark Grey */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease;
-            z-index: 40;
+        .floating-pattern:nth-child(3) {
+            animation-delay: -4s;
         }
 
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
-        /* Hover Effects for Clickable Titles */
-        .journey-title {
-            cursor: pointer;
-            transition: color 0.3s, text-decoration 0.3s;
+        .pulse-opacity {
+            animation: pulse-fade 3s ease-in-out infinite;
         }
 
-        .journey-title:hover {
-            color: var(--hover-color);
-            text-decoration: underline;
+        @keyframes pulse-fade {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 30px;
-            }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            transition: all 0.3s ease;
+        }
 
-            .journey-content {
-                margin-left: 70px;
-            }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
 
-            .tooltip {
-                top: -50px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .blog-section {
-                width: 100%;
-                max-width: none;
-            }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #e5e7eb 50%, transparent 100%);
         }
     </style>
 </head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-bold text-xl text-gray-900">Shree Pandey</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-600 hover:text-blue-600 transition">Services</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition">Projects</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                    <a href="#contact" class="btn-primary text-white px-4 py-2 rounded-lg">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<body class="min-h-screen text-gray-100">
-    <div class="container mx-auto px-4 py-8 max-w-4xl relative">
-        <!-- Timeline Line -->
-        <div class="timeline-line"></div>
-
-        <header class="mb-12 text-center">
-            <img src="https://i.ibb.co/9ywcYyM/1651271276875-1.jpg" alt="Shree Pandey"
-                class="profile-image rounded-full mx-auto mb-4 border-2 border-blue-500">
-            <h1 class="text-4xl font-bold mb-2 text-white">Shree Pandey</h1>
-            <p class="text-xl text-blue-400">Entrepreneur | AI Researcher | Quantitative Analyst </p>
-        </header>
-
-        <main>
-            <section id="journey" class="mb-12">
-                <h2 class="text-[1rem] font-bold mb-6 text-white">Journey</h2>
-
-                <div class="space-y-12">
-                    <!-- Journey Item 1: Building the best AI-Butler (2024) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2024</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M12 8V4H8"></path>
-                                    <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-                                    <path d="M2 14h2"></path>
-                                    <path d="M20 14h2"></path>
-                                    <path d="M15 13v2"></path>
-                                    <path d="M9 13v2"></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog1')">
-                                Building the Best AI-Butler &#128279;</h3>
-                                        <!-- New Expand Button -->
-                                        <a href="/blogs/ai-butler.html" class="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400 hover:text-blue-300" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                            </svg>
-                                        </a>
-
-                            <p class="text-gray-300">Currently focused on using AI to solve the problems of ground and
-                                have seen beautiful successes.</p>
-                            <!-- Tooltip -->
-                            <div class="tooltip">World as we know it, will get better. Trying my steps to make it even
-                                better.</div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 2: Open Source and AI Research (2024) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2024</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog2')">
-                                Open Source and AI Research &#128279;</h3>
-                            <p class="text-gray-300">Working on various projects including reinforcement learning for
-                                LLMs
-                                and creating large-scale datasets.</p>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Engaging in open-source projects to learn AI better.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 3: Algorithmic Trading & Hedge Fund Experience (2023) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2023</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                    </path>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog3')">
-                                Algorithmic Trading & Hedge Fund Experience &#128279;</h3>
-                            <ul class="list-disc list-inside text-gray-300">
-                                <li>Built a massive simulation for testing trading strategies at a hedge fund (Aug 2023
-                                    - Jan 2024)</li>
-                                <li>Developed a crypto options trading algorithm (Jan - Jul 2023)</li>
-                            </ul>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Developed algorithms and simulations for trading strategies at a hedge
-                                fund.</div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 4: Entrepreneurial Pursuit (2022) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2022</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog4')">
-                                Dropping Out of college &#128279;</h3>
-                            <p class="text-gray-300">Why I left college?</p>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Pursued entrepreneurship by leveraging alumni connections and
-                                opportunities.</div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 5: Published 'The IITM Nexus' (2021) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2021</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog5')">
-                                Published 'The IITM Nexus'&#128279;
-                            </h3>
-                            <p class="text-gray-300">Authored a book showcasing successful IIT Madras alumni
-                                entrepreneurs,
-                                reaching #20 on Amazon's top-selling autobiographies.</p>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Authored a book showcasing successful IIT Madras alumni entrepreneurs.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 6: Founded Insti (2020) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2020</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog6')">
-                                Founded Insti &#128279;</h3>
-                            <p class="text-gray-300">Transformed a confession page into a thriving media firm, expanding
-                                to
-                                over 20 colleges and managing a team of 50 people.</p>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Transformed a confession page into a fun media firm expanding to
-                                120+ colleges.</div>
-                        </div>
-                    </div>
-
-                    <!-- Journey Item 7: Joined IIT Madras (2018) -->
-                    <div class="relative">
-                        <!-- Timeline Icon -->
-                        <div class="absolute left-0 top-0">
-                            <span class="text-sm font-semibold text-blue-400 block">2018</span>
-                            <div class="bg-blue-500 rounded-full p-2 mt-1">
-                                <!-- SVG Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="ml-20">
-                            <h3 class="text-xl font-bold text-white journey-title relative" onclick="openBlog('blog7')">
-                                Joined IIT Madras &#128279;</h3>
-                            <ul class="list-disc list-inside text-gray-300">
-                                <li>Surprised everyone by bringing a scientist to present during a class assignment</li>
-                                <li>Sold 300 T-shirts to parents in 30 hours, making a profit of INR 28,000</li>
-                                <li>Launched "Is Insti really safe?" series, raising awareness about campus harassment
-                                </li>
-                            </ul>
-
-                            <!-- Tooltip -->
-                            <div class="tooltip">Joined IIT Madras and engaged in various impactful projects and
-                                initiatives.</div>
-                        </div>
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white pt-20 pb-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                <div>
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        AI Consultant for 
+                        <span class="text-blue-400">Executives</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        I help CEOs and CTOs turn AI ideas into reality. From strategy to implementation, 
+                        I specialize in taking on the toughest AI challenges that drive real business impact.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="mailto:Shree.pandey99@gmail.com?subject=AI Consultation Inquiry&body=Hi Shree,%0D%0A%0D%0AI'm interested in discussing an AI project and would like to schedule a consultation.%0D%0A%0D%0AProject details:%0D%0A-%0D%0A-%0D%0A%0D%0ABest regards," class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-semibold text-center">
+                            Schedule Consultation
+                        </a>
+                        <a href="#projects" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold text-center hover:bg-white hover:text-gray-900 transition">
+                            View Case Studies
+                        </a>
                     </div>
                 </div>
-            </section>
-
-            <section id="curiosities" class="mb-12">
-                <h2 class="text-[1rem] font-bold mb-6 text-white">Current Curiosities</h2>
-                <ul class="list-disc list-inside text-gray-300">
-                    <li>What are the careers that give people easy headstart but also growth potential, can we even scale them</li>
-                    <li>How does convergence to an answer works, will we ever reach it using LLMs</li>
-                    <li>If we all live 200+ years, will the marriage, education and career look the same. Does it impact massively how we live 0-80 then vs now.</li>
-                </ul>
-            </section>
-        </main>
-
-        <footer class="text-center text-gray-500 mt-12">
-            <p>&copy; 2024 Shree Pandey. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- Overlay for Blog Section -->
-    <div class="overlay" id="overlay" onclick="closeBlog()"></div>
-
-    <!-- Blog Sections -->
-    <!-- Blog Item 1 -->
-    <div class="blog-section" id="blog1">
-        <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Building the Best AI-Butler</h2>
-        <p class="text-gray-300">
-            I am building something which I use myself and want to use even more.
-        </p>
-        <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
-    </div>
-
-<!-- Blog Item 2 -->
-<div class="blog-section" id="blog2">
-    <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Open Source and AI Research</h2>
-    <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-        <strong>Titanic Dataset Prediction with GPT-4 (2024)</strong>
-    </p>
-
-    <!-- Block for Titanic Dataset Prediction -->
-    <div class="text-gray-300"
-        style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-        <p style="margin-bottom: 20px; color: #696969;">
-            We recently tackled the famous Titanic Dataset prediction task using GPT-4, achieving impressive results
-            with 78% accuracy. Our approach involved providing the model with survival rate statistics based on
-            parameters such as age, class, and gender. Initially, fare emerged as a key predictor, but the model also
-            identified a combination of age and class as important factors.
-        </p>
-
-        <!-- Sub-heading -->
-        <p style="color: #696969;">
-            <strong>Significant Findings:</strong>
-        </p>
-
-        <!-- Sub-pointers -->
-        <ul style="color: #696969; margin-bottom: 20px;">
-            <li>Fare and class combined played a crucial role in survival prediction.</li>
-            <li>The model was able to suggest new factors based on the input data, improving prediction accuracy.</li>
-            <li>However, the model struggled to prioritize facts, such as the higher impact of gender over fare.</li>
-        </ul>
-
-        <p style="margin-bottom: 20px; color: #696969;">
-            The highest accuracy achieved was 77.99%, but we identified opportunities for further improvement. We
-            believe Direct Preference Optimization (DPO) could help train the model to better prioritize certain
-            factors and increase the accuracy beyond 80%.
-        </p>
-
-        <!-- Image Section -->
-        <div style="margin-bottom: 20px; text-align: center;">
-            <img src="GH5EOQIXIAAznKP.jpg" alt="Titanic Prediction Image" style="max-width: 100%; border-radius: 10px;">
-        </div>
-
-        <!-- Video Section -->
-        <div style="margin-bottom: 20px; text-align: center;">
-            <video controls style="max-width: 100%; border-radius: 10px;">
-                <source src="fakjfhhfdaoij - 1764925474134720694.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
-
-    <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-        <strong>Solving Tic-Tac-Toe with Reinforcement Learning & Open Source Contribution</strong>
-    </p>
-
-    <!-- Block for Tic-Tac-Toe and Open Source -->
-    <div class="text-gray-300"
-        style="border: 1px solid #ccc; padding: 20px; background-color: #f0f8ff; border-radius: 10px; margin-top: 20px;">
-        <p style="margin-bottom: 20px;color: #696969;">
-            Another exciting project involved solving Tic-Tac-Toe using reinforcement learning for large language
-            models (LLMs). This experiment opened up possibilities for scaling training data and improving LLMs'
-            decision-making capabilities. In collaboration with a friend, I also contributed to open source by building
-            a massive dataset inspired by VQGAN models, which has been helpful for freelance AI research projects.
-        </p>
-    </div>
-
-    <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
-</div>
-
-    <!-- Blog Item 3 -->
-    <div class="blog-section" id="blog3">
-        <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Algorithmic Trading & Hedge Fund Experience</h2>
-        <!-- Main heading 1 -->
-        <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-            <strong>Developed a crypto options trading algorithm (Jan - Jul 2023)</strong>
-        </p>
-
-        <!-- Block for Crypto Options Trading Algorithm -->
-        <div class="text-gray-300"
-            style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-
-            <!-- Body of main heading 1 -->
-            <p style="margin-bottom: 20px; color: #696969;">
-                I wanted to build an algorithm for prediction markets. I started with cricket but quickly shifted to
-                crypto
-                since time arbitrage and fixing weren't prevalent in small-sized crypto options and on the exchange. The
-                primary
-                goal was to develop an algorithm that could trade better than humans. When we began, I had no idea how
-                Python
-                worked, but early ChatGPT assistance was invaluable.
-            </p>
-
-            <!-- Sub-heading -->
-            <p style="color: #696969;">
-                <strong>Significant challenges at the start:</strong>
-            </p>
-
-            <!-- Sub-pointers -->
-            <ul style="color: #696969; margin-bottom: 20px;">
-                <li>Options time duration was 20 minutes, and they were binary.</li>
-                <li>Research in this space, especially in crypto, was negligible, providing no solid foundation to
-                    begin.</li>
-                <li>High unpredictability of the crypto market – pretty obvious challenge.</li>
-            </ul>
-
-            <!-- Body continuation -->
-            <p style="margin-bottom: 20px; color: #696969;">
-                I dove in headfirst, spending significant time analyzing data and talking to traders. True realization
-                began
-                when I started manually reading the data. After working with it for so long, I gained a rough
-                understanding of
-                what the price of an option should be, and when it didn’t match, I looked for reasons. It was a hellish
-                three
-                months of figuring things out, especially with no mentorship on how to build something like this or if
-                it was
-                even possible. But with strong encouragement from mentors to just keep trying, I managed to create the
-                algorithm. It wasn’t perfect, but it performed exceptionally well under certain conditions.
-            </p>
-
-            <!-- Sub-heading -->
-            <p style="color: #696969;">
-                <strong>Good conditions for the algorithm:</strong>
-            </p>
-
-            <!-- Sub-pointers -->
-            <ul style="color: #696969; margin-bottom: 20px;">
-                <li>When the market was highly unpredictable but not in a pump-and-dump cycle</li>
-                <li>When the market wasn’t racing up or down</li>
-            </ul>
-
-            <!-- Body continuation -->
-            <p style="margin-bottom: 20px; color: #696969;">
-                The algorithm was based on random motion, which I later realized was a foundation of the Black-Scholes
-                equation
-                too. I applied a 1D analogy instead of a 2D one. Sometimes, it worked so well that we made 10x returns
-                in an
-                hour from our base capital.
-            </p>
-
-            <!-- Sub-heading -->
-            <p style="color: #696969;">
-                <strong>Why didn’t I continue?</strong>
-            </p>
-
-            <!-- Sub-pointers -->
-            <ul style="color: #696969; margin-bottom: 20px;">
-                <li>Crypto volumes in the real market dried up: When this happens, the market stays stable for long
-                    periods, and
-                    theta decay becomes the primary way to make money. I had no idea what theta was at that time.</li>
-                <li>The exchange we were working with was reconsidering allowing algorithms due to legal considerations.
-                </li>
-                <li>A minor factor was the uncertainty surrounding government taxation on high-frequency trading (HFT)
-                    in these
-                    spaces.</li>
-            </ul>
-        </div>
-        <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-            <strong>Built a massive simulation for testing trading strategies at a hedge fund (Aug 2023 - Jan
-                2024)</strong>
-        </p>
-
-        <!-- Block for Hedge Fund Simulation -->
-        <div class="text-gray-300"
-            style="border: 1px solid #ccc; padding: 20px; background-color: #f0f8ff; border-radius: 10px; margin-top: 20px;">
-            <!-- Body of main heading 2 -->
-            <p style="margin-bottom: 20px;color: #696969;">
-                At the hedge fund, I wasn’t as satisfied with my performance as I usually am. Building a massive
-                simulation
-                capable of testing 1 million different trading strategies with limited GPU usage and time was a
-                significant
-                achievement. Each iteration improved, but I never felt it was good enough for the time I spent on it.
-                However,
-                two positive things came out of the experience: I regained trust in my mathematical skills, and I
-                realized that
-                more than money, what really matters to me is making an impact and solving people’s problems.
-            </p>
-        </div>
-
-        <!-- Blog Item 4 -->
-        <div class="blog-section" id="blog4">
-            <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Dropping Out of college</h2>
-            <p class="text-gray-300">
-                I think for me completing college degree was never the goal, it was always what I get from being in
-                college, and there
-                were few things friends, alumni connections, placement, access to top labs. Post COVID, I was already
-                connected with
-                friends really well online and was in Bangalore building company with my other friends. Alumni
-                connections got really
-                strong while writing the book, it genuinely helped me connect with people I could have not even think
-                of. Placement,
-                because of being active in startup space, I was getting opportunities to work already so it didn't felt
-                like big gain.
-                Yes, access to top labs is something I missed, but back then I thought I'll mostly not code or go in
-                research side
-                (Life is fun when you let it flow).
-            </p>
-            <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
-        </div>
-
-        <!-- Blog Item 5 -->
-<div class="blog-section" id="blog5">
-    <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Published 'The IITM Nexus'</h2>
-
-    <!-- Add the image with smaller size and border -->
-    <img src="Book.png" alt="The IITM Nexus Book Cover" class="w-32 h-auto border-2 border-gray-400 rounded mb-4">
-
-    <p class="text-gray-300">
-        Well, I with my team at "Insti" used to write books on college entrepreneurs. We loved doing that, it
-        was fun sharing small wins of people and few became really successful in them. We used to share them on
-        LinkedIn, one
-        day and alumni pinged asking if we will be interested in writing a book on IIT Madras Alumni (My college), who
-        have
-        already successful companies. It felt interesting so I jumped in, and what a roller coaster journey it was. It
-        pushed me
-        from being fully non tech to tech, to asking tough questions from mental pressure, relationship management,
-        closing of a
-        company and long-short run thoughts. It's focus was to try to see them through the lens of college students and
-        make
-        it as relatable it can get. It was beautiful ❤️.
-    </p>
-
-    <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
-</div>
-
-        <!-- Blog Item 6 -->
-        <div class="blog-section" id="blog6">
-            <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Founded Insti</h2>
-            <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-                <strong>This project happened when I felt I needed a break in life and give time to living small moments
-                    of
-                    Campus.</strong>
-            </p>
-
-            <!-- Block for Founded Insti -->
-            <div class="text-gray-300"
-                style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-
-                <!-- Body of main heading 1 -->
-                <p style="margin-bottom: 20px; color: #696969;">
-                    There was a successful campus confession page whose admin I used to talk with. Just as a joke, we
-                    thought, what
-                    if we ran ads on it by getting sponsors? We got our first money. Slowly, the admin wanted to focus
-                    on study, and
-                    instead of closing the page, I proposed taking it over. What a journey it was! Initially, I got
-                    involved a lot
-                    in campus-related things, which pushed the page's growth. But as soon as COVID started, we began
-                    expanding,
-                    hiring people from other colleges, launching more pages, and increasing content quality. I loved
-                    building it
-                    with a great team and even launched several sub-companies.
-                </p>
-
-                <!-- Sub-heading -->
-                <p style="color: #696969;">
-                    <strong>Why I stopped it?</strong>
-                </p>
-
-                <!-- Sub-pointers -->
-                <ul style="color: #696969; margin-bottom: 20px;">
-                    <li>It was taxing to manage a constantly changing team of interns, with new people joining and
-                        leaving every
-                        semester.</li>
-                    <li>Financially, it wasn’t very sustainable. The money that felt big in 2nd year felt small in 3rd
-                        year as
-                        ambitions grew.</li>
-                </ul>
+                <div class="flex justify-center">
+                    <img src="https://i.ibb.co/9ywcYyM/1651271276875-1.jpg" 
+                         alt="Shree Pandey - AI Consultant" 
+                         class="w-80 h-80 rounded-2xl object-cover border-4 border-blue-400/30">
+                </div>
             </div>
-
         </div>
+    </section>
 
-        <!-- Blog Item 7 -->
-        <div class="blog-section" id="blog7">
-            <h2 class="text-[1rem] font-bold text-blue-400 mb-4">Joined IIT Madras</h2>
-            <p class="text-gray-300" style="color: #e0dcdc; font-size: 1.2em; margin-bottom: 20px;">
-                <strong>Memorable experiences at IIT Madras</strong>
-            </p>
-
-            <!-- Block for Memorable Experience 1 -->
-            <div class="text-gray-300"
-                style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-
-                <!-- Experience 1 Body -->
-                <p style="margin-bottom: 20px; color: #696969;">
-                    <strong>1. A surprise presentation moment:</strong> I was tasked with presenting about a scientist
-                    and their
-                    discovery.
-                    Unexpectedly, the scientist I was presenting on showed up in person to explain the topic! It was a
-                    total
-                    surprise, and no one saw it coming.
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">How I Help Executives</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Three core services designed to get your AI initiatives from concept to production
                 </p>
             </div>
 
-            <!-- Block for Memorable Experience 2 -->
-            <div class="text-gray-300"
-                style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">AI Strategy & Planning</h3>
+                    <p class="text-gray-600 mb-6">
+                        Develop comprehensive AI roadmaps aligned with your business objectives. 
+                        Identify high-impact use cases and create implementation timelines.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• AI readiness assessment</li>
+                        <li>• Use case prioritization</li>
+                        <li>• ROI projections</li>
+                        <li>• Technology stack recommendations</li>
+                    </ul>
+                </div>
 
-                <!-- Experience 2 Body -->
-                <p style="margin-bottom: 20px; color: #696969;">
-                    <strong>2. Selling T-shirts to proud parents:</strong> While most T-shirts on campus are sold to
-                    students,
-                    we realized the immense pride parents feel when their children get admitted. So, we sold 300
-                    T-shirts to them in
-                    under 30 hours,
-                    making a profit of INR 28,000 ($350). It was amazing to identify the value proposition and execute
-                    the idea even
-                    without a flashy design.
-                </p>
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">MVP Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Build and validate AI prototypes quickly. Prove concepts before major investments, 
+                        reducing risk and accelerating time-to-market.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Rapid prototyping</li>
+                        <li>• Model selection & training</li>
+                        <li>• Performance validation</li>
+                        <li>• Scalability planning</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Team Building</h3>
+                    <p class="text-gray-600 mb-6">
+                        Help you hire and structure high-performing AI teams. Define roles, 
+                        interview candidates, and establish best practices.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Role definition & job descriptions</li>
+                        <li>• Technical interviewing</li>
+                        <li>• Team structure design</li>
+                        <li>• Best practices implementation</li>
+                    </ul>
+                </div>
             </div>
-
-            <!-- Block for Memorable Experience 3 -->
-            <div class="text-gray-300"
-                style="border: 1px solid #ccc; padding: 20px; margin-bottom: 40px; background-color: #f9f9f9; border-radius: 10px;">
-
-                <!-- Experience 3 Body -->
-                <p style="margin-bottom: 20px; color: #696969;">
-                    <strong>3. Working on "Is Insti really safe?":</strong> I ran an Instagram series highlighting real
-                    stories of
-                    harassment faced by women on campus.
-                    This raised substantial awareness and led to the implementation of several initiatives aimed at
-                    improving
-                    safety. It was eye-opening and inspiring to witness the impact.
-                </p>
-            </div>
-            <button onclick="closeBlog()" class="mt-4 text-blue-400 hover:text-blue-300">Close</button>
         </div>
+    </section>
 
-        <!-- JavaScript for Tooltips and Blog Sections -->
-        <script>
-            // Function to open blog section
-            function openBlog(id) {
-                const blog = document.getElementById(id);
-                const overlay = document.getElementById('overlay');
-                blog.classList.add('active');
-                overlay.classList.add('active');
-                // Disable scrolling when blog is open
-                document.body.style.overflow = 'hidden';
+    <!-- Case Studies Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+                <p class="text-xl text-gray-600">
+                    Real results from challenging AI implementations
+                </p>
+            </div>
+
+            <!-- Featured Case Study -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-700 rounded-3xl p-8 mb-12 text-white">
+                <div class="max-w-4xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">Featured Case Study</span>
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2">
+                            <img src="logo.svg" alt="Optimo Logo" class="h-6 w-auto opacity-90 brightness-0 invert">
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Revolutionizing Loan Applications with AI at Optimo</h3>
+                    <p class="text-lg text-blue-100 mb-6">
+                        Transformed India's fastest-growing FinTech company's loan process using real-time conversational AI, 
+                        reducing costs by 80% and improving user experience dramatically.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1">80%</div>
+                            <div class="text-blue-100 text-sm">Cost Reduction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1">15-20min</div>
+                            <div class="text-blue-100 text-sm">to 3min Process</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1">24/7</div>
+                            <div class="text-blue-100 text-sm">Availability</div>
+                        </div>
+                    </div>
+                    <button onclick="toggleCaseStudy()" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+                        Read Full Case Study
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Project 1 - Konsalidon -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                        <!-- Animated background pattern -->
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="absolute top-4 left-4 w-16 h-16 border-2 border-white rounded-full floating-pattern"></div>
+                            <div class="absolute top-8 right-8 w-8 h-8 border-2 border-white rounded-full floating-pattern"></div>
+                            <div class="absolute bottom-6 left-12 w-12 h-12 border-2 border-white rounded-full floating-pattern"></div>
+                            <div class="absolute bottom-4 right-16 w-6 h-6 border-2 border-white rounded-full pulse-opacity"></div>
+                        </div>
+                        <div class="text-white text-center relative z-10">
+                            <div class="text-4xl font-bold mb-2">🎙️</div>
+                            <div class="text-lg font-semibold">AI Community</div>
+                            <div class="text-sm">Management</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">AI Community Management for Konsalidon</h3>
+                        <p class="text-gray-600 mb-4">
+                            Automated community management for 2,000+ members across 20 professional communities. 
+                            Transformed response times from days to seconds with audio-first AI communication.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm">AI Automation</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm">TTS/Audio</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm">Consulting</span>
+                        </div>
+                        <p class="text-sm text-gray-500">Konsalidon • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                        <!-- Trading chart pattern -->
+                        <div class="absolute inset-0 opacity-20">
+                            <svg viewBox="0 0 200 100" class="w-full h-full">
+                                <polyline points="0,80 20,60 40,70 60,30 80,45 100,20 120,40 140,15 160,35 180,10 200,25" 
+                                         fill="none" stroke="white" stroke-width="2"/>
+                                <polyline points="0,90 25,85 50,95 75,75 100,80 125,65 150,70 175,55 200,60" 
+                                         fill="none" stroke="white" stroke-width="1" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <div class="text-white text-center relative z-10">
+                            <div class="text-4xl font-bold mb-2">📈</div>
+                            <div class="text-lg font-semibold">Algorithmic</div>
+                            <div class="text-sm">Trading</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Algorithmic Trading System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Built a crypto options trading algorithm that achieved 10x returns in optimal market conditions. 
+                            Developed massive simulation infrastructure for strategy testing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Machine Learning</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">FinTech</span>
+                        </div>
+                        <p class="text-sm text-gray-500">Hedge Fund • 2023-2024</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                        <!-- AI neural network pattern -->
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="absolute top-6 left-8 w-3 h-3 bg-white rounded-full"></div>
+                            <div class="absolute top-12 left-16 w-2 h-2 bg-white rounded-full"></div>
+                            <div class="absolute top-8 left-24 w-3 h-3 bg-white rounded-full"></div>
+                            <div class="absolute top-16 right-20 w-2 h-2 bg-white rounded-full"></div>
+                            <div class="absolute top-10 right-12 w-3 h-3 bg-white rounded-full"></div>
+                            <div class="absolute bottom-8 left-12 w-2 h-2 bg-white rounded-full"></div>
+                            <div class="absolute bottom-12 right-16 w-3 h-3 bg-white rounded-full"></div>
+                            <!-- Connection lines -->
+                            <svg class="absolute inset-0 w-full h-full">
+                                <line x1="32" y1="24" x2="64" y2="48" stroke="white" stroke-width="1" opacity="0.6"/>
+                                <line x1="64" y1="48" x2="96" y2="32" stroke="white" stroke-width="1" opacity="0.6"/>
+                                <line x1="96" y1="32" x2="160" y2="64" stroke="white" stroke-width="1" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="text-white text-center relative z-10">
+                            <div class="text-4xl font-bold mb-2">🧠</div>
+                            <div class="text-lg font-semibold">GPT-4</div>
+                            <div class="text-sm">Prediction Model</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">GPT-4 Prediction Model</h3>
+                        <p class="text-gray-600 mb-4">
+                            Achieved 78% accuracy on Titanic dataset using GPT-4 with custom statistical inputs. 
+                            Demonstrated novel approach to ML model optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">GPT-4</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Data Science</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Research</span>
+                        </div>
+                        <p class="text-sm text-gray-500">Open Source • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-r from-orange-500 to-red-600"></div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Reinforcement Learning for LLMs</h3>
+                        <p class="text-gray-600 mb-4">
+                            Solved Tic-Tac-Toe using reinforcement learning techniques specifically designed for 
+                            large language models, exploring new training methodologies.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Reinforcement Learning</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">LLMs</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Research</span>
+                        </div>
+                        <p class="text-sm text-gray-500">Personal Project • 2024</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center relative overflow-hidden">
+                        <!-- Data visualization pattern -->
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="grid grid-cols-8 gap-1 p-4 h-full">
+                                <div class="bg-white rounded-sm h-6"></div>
+                                <div class="bg-white rounded-sm h-8"></div>
+                                <div class="bg-white rounded-sm h-4"></div>
+                                <div class="bg-white rounded-sm h-10"></div>
+                                <div class="bg-white rounded-sm h-6"></div>
+                                <div class="bg-white rounded-sm h-12"></div>
+                                <div class="bg-white rounded-sm h-8"></div>
+                                <div class="bg-white rounded-sm h-6"></div>
+                                <div class="bg-white rounded-sm h-8"></div>
+                                <div class="bg-white rounded-sm h-4"></div>
+                                <div class="bg-white rounded-sm h-10"></div>
+                                <div class="bg-white rounded-sm h-6"></div>
+                                <div class="bg-white rounded-sm h-8"></div>
+                                <div class="bg-white rounded-sm h-12"></div>
+                                <div class="bg-white rounded-sm h-4"></div>
+                                <div class="bg-white rounded-sm h-8"></div>
+                            </div>
+                        </div>
+                        <div class="text-white text-center relative z-10">
+                            <div class="text-4xl font-bold mb-2">📊</div>
+                            <div class="text-lg font-semibold">Large-Scale</div>
+                            <div class="text-sm">Dataset Creation</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Large-Scale Dataset Creation</h3>
+                        <p class="text-gray-600 mb-4">
+                            Built massive datasets inspired by VQGAN models for AI research. 
+                            Contributed to open source community and freelance research projects.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Computer Vision</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Data Engineering</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Open Source</span>
+                        </div>
+                        <p class="text-sm text-gray-500">Collaborative Project • 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Work With Me</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">5+</div>
+                    <p class="text-gray-600">Years in AI/ML</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">IIT</div>
+                    <p class="text-gray-600">Madras Background</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">Hedge Fund</div>
+                    <p class="text-gray-600">Experience</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    I'm Shree Pandey, an AI consultant who specializes in the challenging projects others avoid. 
+                    With a background from IIT Madras and experience building trading algorithms at hedge funds, 
+                    I bring both technical depth and business acumen to every engagement.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    I've helped executives transform their AI ambitions into working systems, from initial strategy 
+                    to team building. My approach is hands-on, results-focused, and designed to minimize risk 
+                    while maximizing impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 hero-gradient text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Transform Your AI Vision?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Let's discuss your AI challenges and create a roadmap to success. 
+                Schedule a consultation to explore how we can work together.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="https://www.linkedin.com/in/pandeyshree/" 
+                   target="_blank"
+                   class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-semibold flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Connect on LinkedIn
+                </a>
+                <div class="text-gray-300 text-center">
+                    <p>Ready to discuss your AI project?</p>
+                    <p class="text-blue-300">Let's connect and explore opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Shree Pandey. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/pandeyshree/" target="_blank" class="hover:text-white transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/shreeforcode" target="_blank" class="hover:text-white transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
             }
+        });
 
-            // Function to close blog section
-            function closeBlog() {
-                const blogs = document.querySelectorAll('.blog-section');
-                blogs.forEach(blog => {
-                    blog.classList.remove('active');
-                });
-                const overlay = document.getElementById('overlay');
-                overlay.classList.remove('active');
-                // Enable scrolling when blog is closed
+        // Case study modal functionality
+        function toggleCaseStudy() {
+            const modal = document.getElementById('caseStudyModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
                 document.body.style.overflow = '';
             }
+        }
 
-            // Tooltip functionality
-            const journeyTitles = document.querySelectorAll('.journey-title');
+        // Close modal when clicking outside
+        document.getElementById('caseStudyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCaseStudy();
+            }
+        });
+    </script>
 
-            journeyTitles.forEach(item => {
-                item.addEventListener('mouseenter', (e) => {
-                    const tooltip = item.parentElement.querySelector('.tooltip');
-                    if (tooltip) {
-                        tooltip.classList.add('tooltip-visible');
-                    }
-                });
+    <!-- Case Study Modal -->
+    <div id="caseStudyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center">
+                    <h2 class="text-2xl font-bold text-gray-900">Case Study: Optimo FinTech</h2>
+                    <button onclick="toggleCaseStudy()" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="p-6 space-y-8">
+                    <!-- Introduction -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Revolutionizing Loan Applications with AI</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            As an AI consultant, my mission is to tackle complex challenges with innovative artificial intelligence solutions. This case study details a transformative project undertaken for Optimo, a leading FinTech company, where we leveraged cutting-edge AI to streamline their home loan application process, significantly enhancing efficiency and user experience.
+                        </p>
+                    </section>
 
-                item.addEventListener('mouseleave', (e) => {
-                    const tooltip = item.parentElement.querySelector('.tooltip');
-                    if (tooltip) {
-                        tooltip.classList.remove('tooltip-visible');
-                    }
-                });
-            });
+                    <!-- Client Overview -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Client Overview</h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            Optimo stands as one of India's fastest-growing FinTech companies, dedicated to simplifying and accelerating financial services, particularly in the home loan sector. Their rapid expansion necessitated scalable and efficient solutions to maintain their competitive edge and deliver superior customer service.
+                        </p>
+                    </section>
 
-            // Close blog when clicking outside
-            const overlay = document.getElementById('overlay');
-            overlay.addEventListener('click', () => {
-                closeBlog();
-            });
-        </script>
+                    <!-- The Challenge -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">The Challenge: Slow, Costly, and Inflexible Processes</h4>
+                        <p class="text-gray-700 mb-4">
+                            Optimo faced significant hurdles in their traditional home loan application workflow, which were proving to be slow, expensive, and difficult to scale.
+                        </p>
+                        
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+                            <h5 class="font-semibold text-red-800 mb-2">Specific Pain Points:</h5>
+                            <ul class="text-red-700 space-y-2">
+                                <li><strong>Tedious Home Loan Assessments:</strong> High costs of on-site visits, increased turnaround time, and scalability issues</li>
+                                <li><strong>Cumbersome Form Filling:</strong> 15-20 minute manual process with language barriers and accessibility challenges</li>
+                                <li><strong>Operational Strain:</strong> Heavy dependence on calling teams with limited operational hours</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- The Solution -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">The Solution: Real-Time AI Conversational Bots</h4>
+                        <p class="text-gray-700 mb-4">
+                            Recognizing the limitations of prior approaches, we pivoted to real-time conversational AI, leveraging advanced capabilities—specifically integrating with Gemini's real-time API.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50 p-6 rounded-lg">
+                                <h5 class="font-semibold text-blue-900 mb-3">🎥 AI Video Caller for Home Assessment</h5>
+                                <ul class="text-blue-800 text-sm space-y-2">
+                                    <li>• AI-powered video calling system replacing physical visits</li>
+                                    <li>• Intelligent guidance through property showcase</li>
+                                    <li>• Deep AI-driven analysis of video footage</li>
+                                    <li>• Complete replacement of expensive human inspections</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-green-50 p-6 rounded-lg">
+                                <h5 class="font-semibold text-green-900 mb-3">🎙️ AI Audio Bot for Form Filling</h5>
+                                <ul class="text-green-800 text-sm space-y-2">
+                                    <li>• Natural conversation-based form completion</li>
+                                    <li>• Dynamic questioning with context awareness</li>
+                                    <li>• Multi-language support for South Indian languages</li>
+                                    <li>• Cultural and linguistic precision</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Results -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">The Results: Transformational Impact</h4>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">80%</div>
+                                <div class="text-sm">Cost Reduction</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">85%</div>
+                                <div class="text-sm">Faster Processing</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">24/7</div>
+                                <div class="text-sm">Availability</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-900 mb-2">Impact on Home Assessment:</h5>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Substantial cost reduction by eliminating physical assessments</li>
+                                    <li>• Drastically reduced turnaround time</li>
+                                    <li>• Unprecedented scalability without proportional staff increase</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-900 mb-2">Impact on Form Filling:</h5>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Reduced completion time from 15-20 minutes to 3-5 minutes</li>
+                                    <li>• Superior user experience with 24/7 availability</li>
+                                    <li>• Improved data quality through conversational interactions</li>
+                                    <li>• Cost-effective scaling without large calling teams</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Building Internal Capabilities -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Building Internal AI Capabilities</h4>
+                        <p class="text-gray-700 mb-4">
+                            Beyond solution development, we empowered Optimo for long-term success by establishing their internal AI capabilities:
+                        </p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><strong>Talent Acquisition:</strong> Screened 50+ candidates and hired a dedicated AI lead from our professional network</li>
+                            <li><strong>Strategic Handover:</strong> Comprehensive knowledge transfer to ensure smooth transition and ongoing management</li>
+                        </ul>
+                    </section>
+
+                    <!-- Key Learnings -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Learnings & Takeaways</h4>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <ul class="text-yellow-800 space-y-2">
+                                <li><strong>Real-Time AI Power:</strong> Essential for intuitive, engaging user experiences</li>
+                                <li><strong>Linguistic Nuance:</strong> Deep cultural adaptation crucial for diverse markets</li>
+                                <li><strong>AI as Scale Enabler:</strong> Transforms manual processes into efficient, scalable solutions</li>
+                                <li><strong>Iterative Development:</strong> Continuous iteration vital for impactful AI solutions</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Separator -->
+                    <div class="border-t border-gray-200 my-8"></div>
+
+                    <!-- Konsalidon Case Study -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">AI Community Management for Konsalidon</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Konsalidon is a new-age consulting firm operating as an agile, decentralized global consulting platform. 
+                            With over 2,000+ members across 20 professional communities and plans to scale from 200 to 4,000 consulting teams, 
+                            they needed an AI solution to manage their explosive growth in community engagement.
+                        </p>
+                    </section>
+
+                    <!-- Konsalidon Client Overview -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">About Konsalidon</h4>
+                        <div class="bg-emerald-50 p-6 rounded-lg mb-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h5 class="font-semibold text-emerald-900 mb-2">Scale & Impact</h5>
+                                    <ul class="text-emerald-800 text-sm space-y-1">
+                                        <li>• 2,000+ community members</li>
+                                        <li>• 200 consulting teams → scaling to 4,000</li>
+                                        <li>• $7.3M annual revenue</li>
+                                        <li>• Supported 200+ businesses since 2018</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-emerald-900 mb-2">Communities</h5>
+                                    <ul class="text-emerald-800 text-sm space-y-1">
+                                        <li>• HR professionals & consultants</li>
+                                        <li>• Finance leaders & tax specialists</li>
+                                        <li>• Biohacking & wellness experts</li>
+                                        <li>• Management consulting teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Konsalidon Challenge -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">The Challenge: Overwhelming Communication Volume</h4>
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                            <h5 class="font-semibold text-red-800 mb-2">Critical Pain Points:</h5>
+                            <ul class="text-red-700 space-y-2">
+                                <li><strong>Volume Overload:</strong> 40-50+ daily messages across 20 specialized communities</li>
+                                <li><strong>Operational Strain:</strong> 1-2 staff working night shifts for global audience</li>
+                                <li><strong>Response Delays:</strong> Days-long response times causing member churn</li>
+                                <li><strong>Complex Events:</strong> Managing Finance Leaders sessions, tax workshops, specialized events</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Konsalidon Solution -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">The Solution: Audio-First AI Communication</h4>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-blue-50 p-6 rounded-lg">
+                                <h5 class="font-semibold text-blue-900 mb-3">🎙️ Audio-First Innovation</h5>
+                                <ul class="text-blue-800 text-sm space-y-2">
+                                    <li>• TTS (Text-to-Speech) system for busy professionals</li>
+                                    <li>• ~1 minute audio summaries vs lengthy text</li>
+                                    <li>• Perfect for time-pressed consultants and executives</li>
+                                    <li>• Higher engagement than "essay-long" messages</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-purple-50 p-6 rounded-lg">
+                                <h5 class="font-semibold text-purple-900 mb-3">⚡ Self-Service Dashboard</h5>
+                                <ul class="text-purple-800 text-sm space-y-2">
+                                    <li>• Real-time updates without developer involvement</li>
+                                    <li>• New community setup in seconds</li>
+                                    <li>• Multi-community campaign management</li>
+                                    <li>• Flexible prompting for different specializations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Konsalidon Results -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Transformational Results</h4>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center p-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">Days → Seconds</div>
+                                <div class="text-sm">Response Time</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">20</div>
+                                <div class="text-sm">Communities Automated</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg">
+                                <div class="text-3xl font-bold mb-1">2,000+</div>
+                                <div class="text-sm">Members Served</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-900 mb-2">Operational Transformation:</h5>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Eliminated night-shift monitoring requirements</li>
+                                    <li>• Staff reallocated to high-value consulting activities</li>
+                                    <li>• Seamless event promotion for Finance Leaders workshops</li>
+                                    <li>• Zero technical overhead for new community additions</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-gray-900 mb-2">Business Growth Support:</h5>
+                                <ul class="text-gray-700 text-sm space-y-1">
+                                    <li>• Supporting scale from 200 to 4,000 consulting teams</li>
+                                    <li>• Enabling their $10K-$250K project facilitation</li>
+                                    <li>• Maintaining engagement across diverse professional communities</li>
+                                    <li>• Perfect alignment with "future of consulting" vision</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Konsalidon Key Innovation -->
+                    <section>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Innovation: Audio-First Professional Communication</h4>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <p class="text-yellow-800">
+                                <strong>The breakthrough insight:</strong> Busy consultants, HR leaders, and industry experts don't read long text messages. 
+                                By converting responses to concise audio summaries, we achieved dramatically higher engagement rates while 
+                                reducing cognitive load for time-pressed professionals managing multiple client projects.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
